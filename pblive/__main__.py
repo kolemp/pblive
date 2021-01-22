@@ -179,6 +179,10 @@ def socket_register(colour_id, colour_name):
 def socket_answer(question_num, answer):
     user = data.users[flask.request.sid]
 
+    # Answers to revealed questions may not be changed
+    if user.session.questions[user.session.question_num].revealed:
+        return
+
     if question_num == user.session.question_num:
         if isinstance(user.session.questions[user.session.question_num], data.SpeedQuestion):
             if question_num in user.answers:
