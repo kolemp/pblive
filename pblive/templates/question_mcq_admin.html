@@ -22,7 +22,11 @@
 	{% if session.questions[question_num].revealed %}
 		<ul class="ui list">
 			{% for answer in session.questions[question_num].answers %}
-				<li style="line-height: 32px;">
+				{% if session.questions[question_num].correct and session.questions[question_num].correct == loop.index %}
+				<li class="admin-answer answer-correct">
+				{% else %}
+				<li class="admin-answer">
+				{% endif %}
 					{{ answer }}:
 					{% for _, user in data.users.items() %}
 						{% if user.session == session and answer in user.answers[question_num] %}
@@ -35,7 +39,7 @@
 	{% else %}
 		<ul class="ui list">
 			{% for answer in session.questions[question_num].answers %}
-				<li>{{ answer }}</li>
+				<li class="admin-answer">{{ answer }}</li>
 			{% endfor %}
 		</ul>
 	{% endif %}
