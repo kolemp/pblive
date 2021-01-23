@@ -30,7 +30,8 @@
 	<script src="{{ url_for('static', filename='vendor/qrcode-js/qrcode.min.js') }}"></script>
 	<script>
 		new QRCode(document.getElementById('qrcode'), 'http://{{ data.server_ip }}:5000/session/{{ session.name }}');
-	</script>
+    </script>
 {% endblock base %}
 
 {% block footmatter %}{% endblock %}
+{% block bottom %}<button class="ui button" style="background-color: red;" onclick="socket.emit('reset_session', '{{ session.name }}');">Reset session</button>{% endblock %}

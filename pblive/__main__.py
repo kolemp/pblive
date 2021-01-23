@@ -144,6 +144,17 @@ def socket_join(session_name):
     flask_socketio.emit('update', render_question_admin(_session, _session.question_num), room=flask.request.sid)
     flask_socketio.emit('update_left', render_sidebar(user, _session), room=flask.request.sid)
 
+@socketio.on('reset_session')
+def socket_join(session_name):
+    _session = data.sessions[session_name]
+    _session.question_num = 0
+
+    for userId in data.users:
+        data.users[userId].answers = []
+
+    for i, s in enumerate(_session.questions):
+         _session.questions[i].revealed = False
+
 
 @socketio.on('disconnect')
 def socket_disconnect():
