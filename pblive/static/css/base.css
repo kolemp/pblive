@@ -43,3 +43,8 @@ li.answer-correct {
     border: 2px solid rgb(106, 209, 149) !important;
     padding-left: 3px !important;
 }
+
+.ui.vertical.buttons > a.ui.button.session-button {
+    margin-top: 5px;
+    text-align: left
+}

@@ -23,7 +23,7 @@
 	
 	<div class="ui vertical buttons">
 		{% for _, session in data.sessions.items() %}
-			<a class="ui button" href="{{ url_for('admin_session', session_name=session.name) }}">{{ session.title }}</a>
+			<a class="ui button session-button" href="{{ url_for('admin_session', session_name=session.name) }}">{{ session.title }}</a>
 		{% endfor %}
 	</div>
 {% endblock %}
