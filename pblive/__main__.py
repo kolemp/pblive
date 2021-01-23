@@ -43,7 +43,7 @@ tmp_socket.close()
 data.server_ip = os.environ['QUIZ_SERVER_URL']
 
 # Load session data
-for f in os.listdir('data'):
+for f in sorted(os.listdir('data')):
     if f.endswith('.yaml') and not f.startswith('.'):
         _session_name = f[:-5]
         with open(os.path.join('data', f)) as fh:
