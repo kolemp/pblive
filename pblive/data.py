@@ -67,6 +67,7 @@ class Question:
             'type': TypeQuestion,
             'speed': SpeedQuestion,
             'speed_review': SpeedReviewQuestion,
+            'mcq_review': McqReviewQuestion,
         }
         question = question_types[obj['type']]()
         question.load_dict(obj)
@@ -169,6 +170,11 @@ class SpeedQuestionTimerThread(threading.Thread):
 class SpeedReviewQuestion(Question):
     template = 'question_speed_review.html'
     template_admin = 'question_speed_review_admin.html'
+
+
+class McqReviewQuestion(Question):
+    template = 'question_mcq_review.html'
+    template_admin = 'question_mcq_review_admin.html'
 
 
 class User:
