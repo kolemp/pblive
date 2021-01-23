@@ -27,7 +27,7 @@
 				{% else %}
 				<li class="admin-answer">
 				{% endif %}
-					{{ answer }}:
+					{{ answer }}
 					{% for _, user in data.users.items() %}
 						{% if user.session == session and answer in user.answers[question_num] %}
 							<button class="ui button" style="background-color: {{ user.colour[1] }}; width: 26px; height: 26px; padding: 0 0;">{{ user.colour[0] }}</button>
