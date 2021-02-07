@@ -79,6 +79,10 @@ class Question:
         self.prompt = obj.get('prompt', self.prompt)
         self.image = obj.get('image', self.image)
         self.answers = obj.get('answers', self.answers)
+
+        # Single quotation breaks the answers
+        for id, answer in enumerate(self.answers):
+            self.answers[id] = answer.replace("'", "`")
         self.correct = obj.get('correct', self.correct)
 
 
